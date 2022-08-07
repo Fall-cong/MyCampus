@@ -28,6 +28,6 @@ public class Clazz {
     private String headmaster;
     private String email;
     private String telephone;
-    private String grandName;
+    private String gradeName;
 
 }
