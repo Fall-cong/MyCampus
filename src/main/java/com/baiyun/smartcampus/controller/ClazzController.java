@@ -13,6 +13,8 @@ import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author : fall
  * @date : 2022-08-06 18:41
@@ -27,7 +29,13 @@ public class ClazzController {
     @Autowired
     private ClazzService clazzService;
 
+    @ApiOperation("根据id删除单个或多个班级的信息")
+    @DeleteMapping("/deleteClazz")
+    public Result deleteClazz(@ApiParam("要删除的多个班级的id的JSON数组") @RequestBody List<Integer> ids) {
 
+        clazzService.removeByIds(ids);
+        return Result.ok();
+    }
 
 
     @ApiOperation("新增或修改班级信息")
@@ -48,8 +56,8 @@ public class ClazzController {
                                 @ApiParam("分页查询页的大小") @PathVariable("pageSize") Integer pageSize,
                                 @ApiParam("分页查询的查询条件") Clazz clazz) {
 
-        Page<Clazz> page = new Page<>(pageNo,pageSize);
-        IPage<Clazz> iPage = clazzService.getClazzsByOrp(page,clazz);
+        Page<Clazz> page = new Page<>(pageNo, pageSize);
+        IPage<Clazz> iPage = clazzService.getClazzsByOrp(page, clazz);
 
         return Result.ok(iPage);
     }
