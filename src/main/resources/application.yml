@@ -17,7 +17,7 @@ spring:
       max-lifetime: 540000
       maximum-pool-size: 12
       minimum-idle: 10
-      pool-name: GuliHikariPool
+      pool-name: FallHikariPool
   thymeleaf:
     mode: HTML5
     encoding: UTF-8
